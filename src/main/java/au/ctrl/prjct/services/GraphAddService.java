@@ -26,7 +26,7 @@ public class GraphAddService implements IGraphAddService{
         IGraphOperationService graphOpServ = new GraphOperationService(this.graph);
         int fromIndex = graphOpServ.getNodeIndex(edge.getFromNode());
         int toIndex = graphOpServ.getNodeIndex(edge.getToNode());
-        if(fromIndex == -1 || toIndex == -1 || edge.getEdgeGain().isEmpty()) return false;
+        if(fromIndex == -1 || toIndex == -1) return false;
         this.graph.getEdges().get(fromIndex).add(edge);
         return true;
     }

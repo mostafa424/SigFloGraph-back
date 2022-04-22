@@ -32,9 +32,9 @@ public class SignalFlowGraph {
      * Provided lists are preferably empty, if not the lists are cleared.
      *
      * @param nodes <code>List</code> of <code>String</code> used to store nodes.
-     * @param edges <code>List</code> of <code>List</code> of <code>Integer</code> used to store directed edges between nodes.
-     * @param paths <code>List</code> of <code>List</code> of <code>Integer</code> used to store paths from START to END nodes.
-     * @param loops <code>List</code> of <code>List</code> of <code>Integer</code> used to loops.
+     * @param edges <code>List</code> of <code>List</code> of <code>Edge</code> used to store directed edges between nodes.
+     * @param paths <code>List</code> of <code>List</code> of <code>Edge</code> used to store paths from START to END nodes.
+     * @param loops <code>List</code> of <code>List</code> of <code>Edge</code> used to store loops.
      */
     public SignalFlowGraph(List<String> nodes, List<List<Edge>> edges, List<List<Edge>> paths, List<List<Edge>> loops) {
         this.nodes = nodes;

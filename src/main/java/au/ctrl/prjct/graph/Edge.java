@@ -18,9 +18,9 @@ public class Edge {
     /**
      * Gain between from node and to node represented as a <code>String</code>.
      */
-    private String edgeGain;
+    private int edgeGain;
 
-    public Edge(String fromNode, String toNode, String edgeGain) {
+    public Edge(String fromNode, String toNode, int edgeGain) {
         this.fromNode = fromNode;
         this.toNode = toNode;
         this.edgeGain = edgeGain;
@@ -34,7 +34,7 @@ public class Edge {
         return toNode;
     }
 
-    public String getEdgeGain() {
+    public int getEdgeGain() {
         return edgeGain;
     }
 
@@ -43,7 +43,7 @@ public class Edge {
         if (this == o) return true;
         if (!(o instanceof Edge)) return false;
         Edge edge = (Edge) o;
-        return fromNode.equals(edge.fromNode) && toNode.equals(edge.toNode) && edgeGain.equals(edge.edgeGain);
+        return edgeGain == edge.edgeGain && fromNode.equals(edge.fromNode) && toNode.equals(edge.toNode);
     }
 
     @Override

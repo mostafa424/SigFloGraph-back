@@ -35,9 +35,6 @@ public class GraphOperationService implements IGraphOperationService{
         int toIndex = this.getNodeIndex(edge.getToNode());
         if(fromIndex == -1 || toIndex == -1) return false;
         List<Edge> edgeList = this.graph.getEdges().get(fromIndex);
-        for(Edge fromEdge: edgeList) {
-            if(fromEdge.equals(edge)) return true;
-        }
-        return false;
+        return edgeList.contains(edge);
     }
 }
