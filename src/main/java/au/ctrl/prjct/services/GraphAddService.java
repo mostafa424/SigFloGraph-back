@@ -14,9 +14,9 @@ public class GraphAddService implements IGraphAddService{
 
     @Override
     public boolean addNode(String nodeName) {
-        if(this.graph.getNodes().contains(nodeName)) return false;
+        if(this.graph.getNodes().containsKey(nodeName)) return false;
         else {
-            this.graph.getNodes().add(this.graph.getNodes().size() - 2, nodeName);
+            this.graph.getNodes().put(nodeName, this.graph.getNodes().size());
             return true;
         }
     }
@@ -24,8 +24,8 @@ public class GraphAddService implements IGraphAddService{
     @Override
     public boolean addEdge(Edge edge) {
         IGraphOperationService graphOpServ = new GraphOperationService(this.graph);
-        int fromIndex = graphOpServ.getNodeIndex(edge.getFromNode());
-        int toIndex = graphOpServ.getNodeIndex(edge.getToNode());
+        int fromIndex = graphOpServ.getNode(edge.getFromNode());
+        int toIndex = graphOpServ.getNode(edge.getToNode());
         if(fromIndex == -1 || toIndex == -1) return false;
         this.graph.getEdges().get(fromIndex).add(edge);
         return true;

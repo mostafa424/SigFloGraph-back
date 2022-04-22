@@ -1,12 +1,14 @@
 package au.ctrl.prjct.graph;
 
 import java.util.List;
+import java.util.Map;
 
 public class SignalFlowGraph {
     /**
-     * List of nodes in graph, first and last indices are "START" and "END" nodes.
+     * Map of nodes in graph, keys are node names, values are adjacency list indices.
+     * First and last indices are "START" and "END" nodes.
      */
-    private List<String> nodes;
+    private Map<String, Integer> nodes;
     /**
      * List of directed edges in graph, implemented via adjacency list.
      * Second dimension lists' contents are edges such that the starting node
@@ -36,7 +38,7 @@ public class SignalFlowGraph {
      * @param paths <code>List</code> of <code>List</code> of <code>Edge</code> used to store paths from START to END nodes.
      * @param loops <code>List</code> of <code>List</code> of <code>Edge</code> used to store loops.
      */
-    public SignalFlowGraph(List<String> nodes, List<List<Edge>> edges, List<List<Edge>> paths, List<List<Edge>> loops) {
+    public SignalFlowGraph(Map<String, Integer> nodes, List<List<Edge>> edges, List<List<Edge>> paths, List<List<Edge>> loops) {
         this.nodes = nodes;
         this.edges = edges;
         this.paths = paths;
@@ -57,15 +59,15 @@ public class SignalFlowGraph {
         if(!this.loops.isEmpty()) {
             this.loops.clear();
         }
-        this.nodes.add("START");
-        this.nodes.add("END");
+        this.nodes.put("START", 0);
+        this.nodes.put("END", 1);
     }
 
-    public List<String> getNodes() {
+    public Map<String, Integer> getNodes() {
         return nodes;
     }
 
-    public void setNodes(List<String> nodes) {
+    public void setNodes(Map<String, Integer> nodes) {
         this.nodes = nodes;
     }
 
