@@ -9,6 +9,13 @@ public class InputPayload {
     private List<String> destinations;
     private List<Integer> gains;
 
+    public InputPayload(List<String> nodes, List<String> sources, List<String> destinations, List<Integer> gains) {
+        this.nodes = nodes;
+        this.sources = sources;
+        this.destinations = destinations;
+        this.gains = gains;
+    }
+
     public List<String> getNodes() {
         return nodes;
     }

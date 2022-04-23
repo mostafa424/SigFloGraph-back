@@ -3,6 +3,7 @@ package au.ctrl.prjct.services;
 import au.ctrl.prjct.graph.Edge;
 import au.ctrl.prjct.graph.SignalFlowGraph;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GraphOperationService implements IGraphOperationService{
@@ -44,7 +45,9 @@ public class GraphOperationService implements IGraphOperationService{
             return false;
         }
         graph.getNodes().put("START", 0);
+        graph.getEdges().add(new ArrayList<>());
         graph.getNodes().put("END", 1);
+        graph.getEdges().add(new ArrayList<>());
         return true;
     }
 }

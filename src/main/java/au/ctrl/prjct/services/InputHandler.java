@@ -8,13 +8,16 @@ import java.util.List;
 
 public class InputHandler implements IInputHandler{
     private IGraphAddService graphAdder;
+    private IGraphOperationService graphOperator;
 
-    public InputHandler(IGraphAddService graphAdder) {
+    public InputHandler(IGraphAddService graphAdder, IGraphOperationService graphOperator) {
         this.graphAdder = graphAdder;
+        this.graphOperator = graphOperator;
     }
 
     @Override
     public boolean handleInput(InputPayload payload) {
+        graphOperator.clearGraph();
         List<String> nodes = payload.getNodes();
         List<String> sources = payload.getSources();
         List<String> destinations = payload.getDestinations();

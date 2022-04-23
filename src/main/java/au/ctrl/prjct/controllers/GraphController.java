@@ -21,7 +21,7 @@ public class GraphController {
 
     @PostMapping("/input")
     public boolean takeInput(@RequestBody InputPayload payload) {
-        return new InputHandler(new GraphAddService(graph)).handleInput(payload);
+        return new InputHandler(new GraphAddService(graph), new GraphOperationService(graph)).handleInput(payload);
     }
 
     @GetMapping("/output")

@@ -3,6 +3,7 @@ package au.ctrl.prjct.services;
 import au.ctrl.prjct.graph.Edge;
 import au.ctrl.prjct.graph.SignalFlowGraph;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GraphAddService implements IGraphAddService{
@@ -17,6 +18,7 @@ public class GraphAddService implements IGraphAddService{
         if(this.graph.getNodes().containsKey(nodeName)) return false;
         else {
             this.graph.getNodes().put(nodeName, this.graph.getNodes().size());
+            this.graph.getEdges().add(new ArrayList<>());
             return true;
         }
     }
