@@ -1,8 +1,11 @@
 package au.ctrl.prjct.graph;
 
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class SignalFlowGraph {
     /**
      * Map of nodes in graph, keys are node names, values are adjacency list indices.

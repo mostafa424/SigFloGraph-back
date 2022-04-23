@@ -32,4 +32,19 @@ public class GraphOperationService implements IGraphOperationService{
         List<Edge> edgeList = this.graph.getEdges().get(fromIndex);
         return edgeList.contains(edge);
     }
+
+    @Override
+    public boolean clearGraph() {
+        try {
+            graph.getNodes().clear();
+            graph.getEdges().clear();
+            graph.getPaths().clear();
+            graph.getLoops().clear();
+        } catch (UnsupportedOperationException ex) {
+            return false;
+        }
+        graph.getNodes().put("START", 0);
+        graph.getNodes().put("END", 1);
+        return true;
+    }
 }

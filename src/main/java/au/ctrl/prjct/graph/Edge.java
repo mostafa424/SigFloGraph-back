@@ -50,4 +50,5 @@ public class Edge {
     public int hashCode() {
         return Objects.hash(fromNode, toNode, edgeGain);
     }
+
 }
