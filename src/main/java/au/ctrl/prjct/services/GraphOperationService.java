@@ -3,6 +3,7 @@ package au.ctrl.prjct.services;
 import au.ctrl.prjct.graph.Edge;
 import au.ctrl.prjct.graph.SignalFlowGraph;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GraphOperationService implements IGraphOperationService{
@@ -31,5 +32,22 @@ public class GraphOperationService implements IGraphOperationService{
         if(fromIndex == -1 || toIndex == -1) return false;
         List<Edge> edgeList = this.graph.getEdges().get(fromIndex);
         return edgeList.contains(edge);
+    }
+
+    @Override
+    public boolean clearGraph() {
+        try {
+            graph.getNodes().clear();
+            graph.getEdges().clear();
+            graph.getPaths().clear();
+            graph.getLoops().clear();
+        } catch (UnsupportedOperationException ex) {
+            return false;
+        }
+        graph.getNodes().put("START", 0);
+        graph.getEdges().add(new ArrayList<>());
+        graph.getNodes().put("END", 1);
+        graph.getEdges().add(new ArrayList<>());
+        return true;
     }
 }

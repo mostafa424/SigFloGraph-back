@@ -1,8 +1,14 @@
 package au.ctrl.prjct.graph;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class SignalFlowGraph {
     /**
      * Map of nodes in graph, keys are node names, values are adjacency list indices.
@@ -38,7 +44,11 @@ public class SignalFlowGraph {
      * @param paths <code>List</code> of <code>List</code> of <code>Edge</code> used to store paths from START to END nodes.
      * @param loops <code>List</code> of <code>List</code> of <code>Edge</code> used to store loops.
      */
-    public SignalFlowGraph(Map<String, Integer> nodes, List<List<Edge>> edges, List<List<Edge>> paths, List<List<Edge>> loops) {
+    @Autowired
+    public SignalFlowGraph(Map<String, Integer> nodes,
+                           @Qualifier("edges") List<List<Edge>> edges,
+                           @Qualifier("paths") List<List<Edge>> paths,
+                           @Qualifier("loops") List<List<Edge>> loops) {
         this.nodes = nodes;
         this.edges = edges;
         this.paths = paths;
@@ -60,7 +70,9 @@ public class SignalFlowGraph {
             this.loops.clear();
         }
         this.nodes.put("START", 0);
+        this.edges.add(new ArrayList<>());
         this.nodes.put("END", 1);
+        this.edges.add(new ArrayList<>());
     }
 
     public Map<String, Integer> getNodes() {
