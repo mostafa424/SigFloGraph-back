@@ -1,5 +1,6 @@
 package au.ctrl.prjct.graph;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ForwardPathPayload {
@@ -11,8 +12,8 @@ public class ForwardPathPayload {
         this.path_gain = path_gain;
     }
     public ForwardPathPayload() {
-        this.forward_paths = null;
-        this.path_gain = null;
+        this.forward_paths = new ArrayList<>();
+        this.path_gain = new ArrayList<>();
     }
 
     public List<String> getForward_paths() {

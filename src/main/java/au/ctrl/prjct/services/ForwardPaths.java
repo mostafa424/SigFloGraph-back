@@ -20,7 +20,7 @@ public class ForwardPaths {
        }
        return res;
     }
-    public void dfs(SignalFlowGraph graph,int next_node, int gain, String forward_path,boolean[]flags){
+    private void dfs(SignalFlowGraph graph,int next_node, int gain, String forward_path,boolean[]flags){
         if(next_node==graph.getNodes().get("END")){
             res.getForward_paths().add(forward_path);
             res.getPath_gain().add(gain);
